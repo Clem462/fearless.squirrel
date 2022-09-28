@@ -1,6 +1,7 @@
 var Player = function(name, color, position, direction) {
 
     this.name = name;
+    this.startPosition = position;
     this.position = position;
     this.life = 3;
     this.bullets = new Array();
@@ -21,11 +22,17 @@ var Player = function(name, color, position, direction) {
 };
 
 Player.prototype.dead = function () {
-    this.graphic.position.z = this.graphic.position.z-0.1;
+    if (player1.life > 0) {
+        player1.life--;
+        player1.position = player1.startPosition;
+    }
+    else {
+        this.graphic.position.z = this.graphic.position.z-0.1;
         //Nettoyage de la div container
         $("#container").html("");
         jQuery('#'+this.name+' >.life').text("Tu es mort !");
         init();
+    }
 }
 
 Player.prototype.accelerate = function (distance) {
