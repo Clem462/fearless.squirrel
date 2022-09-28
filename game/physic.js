@@ -13,6 +13,14 @@ function update()
     if (keyboard.pressed("down"))
         player1.decelerate(moveDistance);
 
+    var km = enemy.graphic.position.x + WIDTH / 2;
+    if (km < 0)
+        enemy.turnLeft(Math.PI);
+    if (km > WIDTH)
+        enemy.turnLeft(Math.PI);
+    enemy.accelerate(moveDistance);
+
     player1.move();
+    enemy.move();
     controls.update();
 }
