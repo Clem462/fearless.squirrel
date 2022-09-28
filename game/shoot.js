@@ -94,6 +94,7 @@ function player_falling()
             && (y < mtileY))
         {
            player1.dead();
+           break;
         }
     }
 
